@@ -1,0 +1,6 @@
+.....
+
+Finished in 0.44961 seconds (files took 1.69 seconds to load)
+5 examples, 0 failures
+
+Coverage report generated for RSpec to /home/ec2-user/environment/hw-acceptance-unit-test-cycle/rottenpotatoes/coverage. 46 / 55 LOC (83.64%) covered.
