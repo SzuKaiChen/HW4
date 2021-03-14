@@ -2,7 +2,7 @@ require 'rails_helper'
 
 
 describe "Routing test", :type => :request do
-    it "route correctly when the movie has a director" do
+    it "when the movie has a director" do
         new_movies = [{"title": "movie_1", "director": "director_a"}, {"title": "movie_3", "director": "director_a"}]
         new_movies.each do |new_movie|
             Movie.create(new_movie)
@@ -13,7 +13,7 @@ describe "Routing test", :type => :request do
         expect(response).to render_template("same_director")
     end
 
-    it "route correctly when the movie has no director" do
+    it "when the movie has no director" do
         new_movies = [{"title": "movie_2"}]
         new_movies.each do |new_movie|
             Movie.create(new_movie)
@@ -24,23 +24,23 @@ describe "Routing test", :type => :request do
         expect(response).to redirect_to("/movies")
     end
     
-    it "route correctly in general" do
+    it "Running correctly in general" do
         new_movies = [{"title": "movie_1", "director": "director_a", "release_date": "2000-01-01"}]
         new_movies.each do |new_movie|
             Movie.create(new_movie)
         end
         
-        get "/movies"
-        expect(response).to render_template("index")
-
         get "/movies/1"
         expect(response).to render_template("show")
         
-        get "/movies/1/edit"
-        expect(response).to render_template("edit")
+        get "/movies"
+        expect(response).to render_template("index")
         
         get "/movies/new"
         expect(response).to render_template("new")
+        
+        get "/movies/1/edit"
+        expect(response).to render_template("edit")
         
         put "/movies/1", "movie": {"title": "movie_2"}
         expect(response).to redirect_to("/movies/1")
@@ -49,5 +49,4 @@ describe "Routing test", :type => :request do
         expect(response).to redirect_to("/movies")
         
     end
-    
 end
